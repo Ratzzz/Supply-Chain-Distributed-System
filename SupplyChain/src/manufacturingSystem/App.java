@@ -36,17 +36,18 @@ public class App {
 		//System.out.println(pl.getProductList());
 		//System.out.println("product DVD player info from manufacturer1:\n"+ pl.getProductInfo("DVD player"));
 		
-		/*
+		
 		PurchaseOrderList pol = new PurchaseOrderList();
 		pol.loadPurchaseOrders(manufacturerName);
 		System.out.println(pol.getPurchaseOrderList());
 		Product pt1 = pl.getProductInfo("video camera");
-		PurchaseOrder newpo = new PurchaseOrder("55","002",pt1,10,600);
+		PurchaseOrder newpo = new PurchaseOrder("222","002",pt1,10,600,true);
 		pol.getPurchaseOrderList().put(newpo.orderNum, newpo);
 		pol.replenish(manufacturerName);
+		pol.loadPurchaseOrders(manufacturerName);
 		System.out.println("purchase list for  manufacturer1 afther inserting a new purchase order :\n");
 		System.out.println(pol.getPurchaseOrderList());
-		*/
+		
 		
 		/*
 		CustomerList cl = new CustomerList();

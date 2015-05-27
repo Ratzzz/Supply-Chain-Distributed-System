@@ -27,6 +27,7 @@ public class InventoryList {
 	public ArrayList<Inventory> getInventoryList(){
 		return inventoryList;
 	}
+	
 	/**
 	 * Save inventoryList to the XML file
 	 * 

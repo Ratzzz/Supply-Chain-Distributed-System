@@ -40,13 +40,14 @@ public class PurchaseOrder {
 		manufacturerName = mfn;
 	}
 	
-	PurchaseOrder(String on, String cr, Product pt, int qt, float up){
+	PurchaseOrder(String on, String cr, Product pt, int qt, float up, boolean ip){
 		
 		orderNum = on;
 		customerRef = cr;
 		product = pt;
 		quantity = qt;
 		unitPrice = up;
+		ifPaid = ip;
 		
 	}
 	
@@ -100,7 +101,10 @@ public class PurchaseOrder {
 		qt.setText(Integer.toString(quantity));
 		Element up = ne.addElement("unitPrice");
 		up.setText(Float.toString(unitPrice));
-		
+		Element ip = ne.addElement("ifPaid");
+		if(this.ifPaid)
+			ip.setText("yes");
+		else ip.setText("no");
 		return ne;
 	}
 	
@@ -116,6 +120,7 @@ public class PurchaseOrder {
 		Product pt = new Product();
 		int qt;
 		float up;
+		boolean ip;
 		on=root.element("orderNum").getText();
 		//System.out.println("orderNum:"+ on;)
 		cf=root.element("customerRef").getText();
@@ -123,8 +128,13 @@ public class PurchaseOrder {
 		pt.setProductType(typ);
 		qt= Integer.valueOf(root.element("quantity").getText());
 		up = Float.valueOf(root.element("unitPrice").getText());
-		
-		PurchaseOrder ps = new PurchaseOrder(on, cf, pt, qt, up);
+		String pay = root.element("ifPaid").getText();
+		if(pay.equals("yes"))
+			ip = true;
+		else
+			ip = false;
+			
+		PurchaseOrder ps = new PurchaseOrder(on, cf, pt, qt, up, ip);
 		return ps;
 	}
 	

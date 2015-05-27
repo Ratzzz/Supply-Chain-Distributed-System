@@ -23,6 +23,7 @@ import dataIO.FileManager;
  */
 public class PurchaseOrderList {
 	
+	//order Number is the key for Map purchaseOrderList
 	Map<String , PurchaseOrder> purchaseOrderList = new HashMap<>();
 	
 	public Map<String , PurchaseOrder> getPurchaseOrderList(){
@@ -63,10 +64,9 @@ public class PurchaseOrderList {
 	 * 
 	 * @return a map which stores all the  purchase orders with the key as the orderNum
 	 */
-	public void loadPurchaseOrders(String mfn)throws Exception{
-		Map<String , PurchaseOrder> orderList = new HashMap<>();
+	public void loadPurchaseOrders(String manufacturerName)throws Exception{
 		String filepath = new String(System.getProperty("user.dir")
-				+ "/src/xml/" + mfn + "_orders.xml");
+				+ "/src/xml/" + manufacturerName + "_orders.xml");
 		FileManager xmlfile = new FileManager(filepath);
 		Element root = xmlfile.Read();
 		List<Element> nodes = root.elements("order");
@@ -74,7 +74,7 @@ public class PurchaseOrderList {
 			Element me = (Element) it.next();
 			PurchaseOrder nm = new PurchaseOrder();
 			nm = PurchaseOrder.load(me);
-			nm.setManufacturername(mfn);
+			nm.setManufacturername(manufacturerName);
 			purchaseOrderList.put(nm.getOrderNum(), nm);
 		}
 	

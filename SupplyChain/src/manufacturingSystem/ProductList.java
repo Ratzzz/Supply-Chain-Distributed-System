@@ -17,6 +17,8 @@ import dataIO.FileManager;
  * @date 2015-05-25
  */
 public class ProductList {
+	
+	// product list contains all the product info for a specific manufacturer, key for the map is the product type
 	Map<String , Product> productList = new HashMap<>();
 	
 	public Map<String,Product> getProductList(){
